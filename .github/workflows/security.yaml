@@ -39,3 +39,6 @@ jobs:
         with:
           sarif_file: results.sarif
           category: clj-watson
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
