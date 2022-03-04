@@ -32,10 +32,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: read report sarif
+        run: cat results.sarif
+        
       - uses: github/codeql-action/upload-sarif@v1
         with:
-          # Path to SARIF file relative to the root of the repository
           sarif_file: results.sarif
-          # Optional category for the results
-          # Used to differentiate multiple results for one commit
           category: clj-watson
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
