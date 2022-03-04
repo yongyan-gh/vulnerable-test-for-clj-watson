@@ -29,6 +29,8 @@ jobs:
 
       - name: scan dependencies
         run: clojure -Sdeps "{:deps {io.github.clj-holmes/clj-watson {:git/tag \"v3.0.2-ALPHA\" :git/sha \"1a56cdf\"}}}" -M -m clj-watson.cli scan -p deps.edn -o sarif -s -t github-advisory > /tmp/report.sarif
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: github/codeql-action/upload-sarif@v1
         with: 
