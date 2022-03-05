@@ -33,8 +33,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: read report sarif
-        run: cat results.sarif
+      - name: Upload sarif result
+        uses: actions/upload-artifact@v2
+        with:
+          name: watson scan results
+          path: results.sarif
         
       - uses: github/codeql-action/upload-sarif@v1
         with:
